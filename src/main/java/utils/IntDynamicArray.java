@@ -24,6 +24,8 @@ public class IntDynamicArray {
         data = newArray;
     }
 
+    // todo: size() - return the number of elements in the list
+
     public void add(int value){
         if(numElements == data.length){
             grow();
@@ -34,4 +36,8 @@ public class IntDynamicArray {
             System.out.println(i+ ") " + data[i]);
         }
     }
+
+    // todo: indexOf() - take in a value to be located and return its position in the list (if found)
+
+    // todo: get() - take in a position in the list and return the value found at that position
 }
