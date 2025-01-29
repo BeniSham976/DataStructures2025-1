@@ -39,7 +39,14 @@ public class IntDynamicArray {
         }
     }
 
-    // todo: indexOf() - take in a value to be located and return its position in the list (if found)
+    public int indexOf(int value){
+        for (int i = 0; i < numElements; i++) {
+            if(value == data[i]){
+                return i;
+            }
+        }
+        return -1;
+    }
 
     public int get(int pos){
         if(pos >= numElements || pos < 0){
