@@ -41,5 +41,11 @@ public class IntDynamicArray {
 
     // todo: indexOf() - take in a value to be located and return its position in the list (if found)
 
-    // todo: get() - take in a position in the list and return the value found at that position
+    public int get(int pos){
+        if(pos >= numElements || pos < 0){
+            throw new IndexOutOfBoundsException("Index cannot be outside the range of the data");
+        }
+
+        return data[pos];
+    }
 }
