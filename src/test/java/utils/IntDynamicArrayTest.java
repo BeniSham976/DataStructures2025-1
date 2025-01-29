@@ -31,7 +31,7 @@ class IntDynamicArrayTest {
 
     @Test
     public void testGet_NegativePosition(){
-        IntDynamicArray myList = new IntDynamicArray();
+        IntDynamicArray myList = new IntDynamicArray():
         myList.add(5);
         myList.add(10);
         myList.add(15);
