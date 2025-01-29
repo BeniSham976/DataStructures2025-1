@@ -28,4 +28,16 @@ class IntDynamicArrayTest {
         int result = myList.indexOf(20);
         assertEquals(expResult, result, "Incorrectly located invalid value");
     }
+
+    @Test
+    public void testGet_NegativePosition(){
+        IntDynamicArray myList = new IntDynamicArray();
+        myList.add(5);
+        myList.add(10);
+        myList.add(15);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            myList.get(-1);
+        });
+    }
 }
