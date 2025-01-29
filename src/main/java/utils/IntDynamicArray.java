@@ -36,6 +36,8 @@ public class IntDynamicArray {
         data[numElements++] = value;
     }
 
+    // todo: add(value, position)
+
     public int indexOf(int value){
         for (int i = 0; i < numElements; i++) {
             if(value == data[i]){
