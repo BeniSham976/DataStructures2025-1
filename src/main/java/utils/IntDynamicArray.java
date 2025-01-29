@@ -24,7 +24,9 @@ public class IntDynamicArray {
         data = newArray;
     }
 
-    // todo: size() - return the number of elements in the list
+    public int size(){
+        return numElements;
+    }
 
     public void add(int value){
         if(numElements == data.length){
