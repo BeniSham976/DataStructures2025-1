@@ -34,9 +34,6 @@ public class IntDynamicArray {
         }
 
         data[numElements++] = value;
-        for (int i = 0; i < numElements; i++) {
-            System.out.println(i+ ") " + data[i]);
-        }
     }
 
     public int indexOf(int value){
