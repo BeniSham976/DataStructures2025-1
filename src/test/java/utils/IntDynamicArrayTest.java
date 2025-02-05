@@ -50,6 +50,13 @@ class IntDynamicArrayTest {
      *  - after growth (e.g. 11)
      */
 
+    @Test
+    public void testSize_EmptyList(){
+        IntDynamicArray myList = new IntDynamicArray();
+        int size = 0;
+        assertEquals(size, myList.size(), "Newly created list did not have size 0");
+    }
+
     /*
      * Tests for get():
      *  - get from a negative position
