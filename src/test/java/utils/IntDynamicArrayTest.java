@@ -104,4 +104,9 @@ class IntDynamicArrayTest {
             assertEquals(data[i], myList.get(i));
         }
     }
+
+    /*
+    * Tests for add:
+    *  - Adding to "full" list (triggering grow)
+    */
 }
