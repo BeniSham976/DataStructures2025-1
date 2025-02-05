@@ -54,4 +54,18 @@ public class IntDynamicArray {
 
         return data[pos];
     }
+
+    public int remove(int pos){
+        if(pos < 0 || pos > numElements){
+            throw new IndexOutOfBoundsException("Position to be deleted must be within the boundaries of the data");
+        }
+
+        int deletedValue = data[pos];
+
+        System.arraycopy(data, pos+1, data, pos, (numElements-(pos+1)));
+        data[numElements-1] = 0;
+        numElements--;
+
+        return deletedValue;
+    }
 }

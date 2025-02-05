@@ -1,0 +1,17 @@
+// VALIDATION
+// if pos is less than 0 or greater than length of array
+//      Throw an index out of bounds exception
+
+// SET UP
+// Save current value at position to variable
+
+// LOGIC
+// For each element in data starting at pos and ending at end of data
+//      Copy element at next position to current position
+
+// CLEAN UP:
+// Wipe duplicated slot - set data at size-1 position to 0
+// Decrease count in list by 1 (size--)
+
+// OUTPUT:
+// Return removed value
