@@ -20,6 +20,22 @@ public class LinkBasedList {
         // return first == null;
     }
 
+    public String get(int index){
+        // VALIDATION:
+        if(isEmpty() || index < 0 || index >= numElements){
+            throw new IndexOutOfBoundsException("Index must be between 0 and " + numElements + ". (Supplied index was" +
+                    " " + index+")");
+        }
+
+        // SET UP:
+        Node current = first;
+        for(int i = 0; i < index; i++){
+            current = current.next;
+        }
+
+        return current.data;
+    }
+
     public void add(String value){
         // VALIDATION
         if(value == null){
