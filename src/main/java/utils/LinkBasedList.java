@@ -10,6 +10,16 @@ public class LinkBasedList {
         this.numElements = 0;
     }
 
+    public int size(){
+        return numElements;
+    }
+
+    public boolean isEmpty(){
+        return numElements == 0;
+        // Could also use this condition:
+        // return first == null;
+    }
+
     public void add(String value){
         // VALIDATION
         if(value == null){
@@ -45,4 +55,15 @@ public class LinkBasedList {
             this.next = null;
         }
     }
+
+    /*
+            int count = 0;
+        Node current = first;
+        while (current != null){
+            count++;
+            current = current.next;
+        }
+
+        return count;
+     */
 }
