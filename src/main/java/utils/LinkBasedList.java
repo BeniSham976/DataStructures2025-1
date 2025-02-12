@@ -4,9 +4,11 @@ public class LinkBasedList {
     private int numElements;
 
     private Node first;
+    private Node last;
 
     public LinkBasedList(){
         this.first = null;
+        this.last = null;
         this.numElements = 0;
     }
 
@@ -51,12 +53,10 @@ public class LinkBasedList {
         if(first == null){
             // Set the first element in the list to be the new node
             first = newNode;
+            last = newNode;
         }else{
-            Node current = first;
-            while(current.next != null){
-                current = current.next;
-            }
-            current.next = newNode;
+            last.next = newNode;
+            last = newNode;
         }
 
         numElements++;
