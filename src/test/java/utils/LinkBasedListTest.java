@@ -51,6 +51,44 @@ class LinkBasedListTest {
     }
 
     @Test
-    void isEmpty() {
+    void testIsEmpty_EmptyList() {
+        // SET UP:
+        LinkBasedList testList = new LinkBasedList();
+        boolean expResult = true;
+
+        // LOGIC:
+        boolean result = testList.isEmpty();
+
+        // ASSERTIONS:
+        assertEquals(expResult, result, "isEmpty() on empty list did not return true");
+    }
+
+    @Test
+    void testIsEmpty_PopulatedList() {
+        // SET UP:
+        LinkBasedList testList = new LinkBasedList();
+        testList.add("Data");
+        boolean expResult = false;
+
+        // LOGIC:
+        boolean result = testList.isEmpty();
+
+        // ASSERTIONS:
+        assertEquals(expResult, result, "isEmpty() on populated list did not return false");
+    }
+
+    @Test
+    public void testAdd_EmptyList(){
+        // SET UP:
+        LinkBasedList testList = new LinkBasedList();
+        int expSize = 1;
+        String expValue = "Data";
+
+        // LOGIC:
+        testList.add(expValue);
+
+        // ASSERTIONS:
+        assertEquals(expSize, testList.size(), "Incorrect size after add to empty list");
+        assertEquals(expValue, testList.get(0), "Value added to empty list could not be retrieved from position 0");
     }
 }
