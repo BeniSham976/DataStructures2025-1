@@ -1,27 +1,47 @@
 package utils;
 
 public class LinkBasedList {
+    // Metadata to track how many elements are in the list
     private int numElements;
 
+    // Pointers to find the start and end of the list
     private Node first;
     private Node last;
 
+    /**
+     * No-argument constructor initialising the list to default settings.
+     */
     public LinkBasedList(){
         this.first = null;
         this.last = null;
         this.numElements = 0;
     }
 
+    /**
+     * Returns the number of elements in this list.
+     * @return the number of elements in this list
+     */
     public int size(){
         return numElements;
     }
 
+    /**
+     * Returns true if this list contains no elements.
+     * @return True if this list contains no elements, false otherwise
+     */
     public boolean isEmpty(){
         return numElements == 0;
         // Could also use this condition:
         // return first == null;
     }
 
+    /**
+     * Returns the element at the specified position in this list.
+     * @param index index of the element to return
+     * @return the element at the specified position in this list
+     * @throws IndexOutOfBoundsException if the index is out of range (index < 0 || index >= numElements) or the list
+     * is empty
+     */
     public String get(int index){
         // VALIDATION:
         if(isEmpty() || index < 0 || index >= numElements){
@@ -38,6 +58,11 @@ public class LinkBasedList {
         return current.data;
     }
 
+    /**
+     * Add the specified element to the end of this list.
+     * @param value the element to be added to this list
+     * @throws IllegalArgumentException if the value to be added is null
+     */
     public void add(String value){
         // VALIDATION
         if(value == null){
@@ -62,7 +87,11 @@ public class LinkBasedList {
         numElements++;
     }
 
-
+    /**
+     * Add the specified element to the start of this list.
+     * @param value the element to be added to this list
+     * @throws IllegalArgumentException if the value to be added is null
+     */
     public void addFirst(String value){
         // VALIDATION:
         // Nulls are not permitted - throw exception if one is provided
@@ -88,7 +117,12 @@ public class LinkBasedList {
         numElements++;
     }
 
-
+    /**
+     * Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.
+     * @param value the element to search for
+     * @return the index of the first occurrence of the element, or -1 if this list does not contain the element
+     * @throws IllegalArgumentException if the value to be found is null
+     */
     public int indexOf(String value){
         // VALIDATION:
         // Nulls are not permitted - throw exception if one is provided
