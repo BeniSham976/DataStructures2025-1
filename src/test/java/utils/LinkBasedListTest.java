@@ -177,4 +177,17 @@ class LinkBasedListTest {
         String result = myList.get(pos);
         assertEquals(expResult, result, "Value not found at position " + pos + " (position within bounds of list).");
     }
+
+    /*
+    TODO: Tests for add(value, pos):
+         INVALID cases:
+                - Negative position
+                - Position greater than number of elements
+                - Null value supplied
+    TODO: Tests for add(value, pos):
+           VALID cases:
+                - Adding to first position (pos = 0)
+                - Adding to last position (pos = size)
+                - Adding in actual middle (pos between 0 and size exclusive)
+     */
 }
