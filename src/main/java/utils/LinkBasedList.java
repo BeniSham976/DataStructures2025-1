@@ -158,14 +158,35 @@ public class LinkBasedList {
         }
     }
 
-    /*
-            int count = 0;
-        Node current = first;
-        while (current != null){
-            count++;
-            current = current.next;
+    public void add(String value, int pos){
+        // VALIDATION:
+        // Nulls are not permitted - throw exception if one is provided
+        if(value == null){
+            throw new IllegalArgumentException("List cannot handle null elements.");
         }
 
-        return count;
-     */
+        if(pos < 0 || pos > numElements){
+            throw new IndexOutOfBoundsException("Index must be between 0 and " + numElements + " inclusive. (Supplied" +
+                    " index was" +
+                    " " + pos+")");
+        }
+
+        if(pos == 0){
+            addFirst(value);
+        }else if(pos == size()){
+            add(value);
+        }else{
+            Node newNode = new Node(value);
+
+            Node current = first;
+            for(int i = 0; i < pos-1; i++){
+                current = current.next;
+            }
+
+            newNode.next = current.next;
+            current.next = newNode;
+
+            numElements++;
+        }
+    }
 }
