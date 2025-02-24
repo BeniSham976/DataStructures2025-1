@@ -196,15 +196,23 @@ public class LinkBasedList {
 
         // TODO: Remove from start of list
         // TODO: Remove from end of list
+        // Create current node to track our current position in list (Tomaz in class example)
         Node current = first;
+        // Create prev node to track the position of the node before us (Bema in class example)
         Node prev = null;
+        // Loop up to position from which we should remove
         for(int i = 0; i < pos; i++){
             prev = current;
             current = current.next;
         }
+        // "Snip" node to be removed from list
+        // This will make the node before us (Bema) point to the node after us (Oscar),
+        // essentially routing the list around us (Tomaz) and ignoring us entirely
         prev.next = current.next;
+        // Remove our link to the list so we know we're not in it anymore
         current.next = null;
 
+        // Decrease the number of elements in the list as one has been removed
         numElements--;
     }
 }
