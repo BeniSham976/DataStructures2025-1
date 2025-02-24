@@ -59,65 +59,6 @@ public class LinkBasedList {
     }
 
     /**
-     * Add the specified element to the end of this list.
-     * @param value the element to be added to this list
-     * @throws IllegalArgumentException if the value to be added is null
-     */
-    public void add(String value){
-        // VALIDATION
-        if(value == null){
-            throw new IllegalArgumentException("Null cannot be added to list");
-        }
-        // SET UP:
-        // Wrap incoming data in node
-        Node newNode = new Node(value);
-
-        // LOGIC:
-        // Deal with adding first element to list
-        // If the list does not already have a value / is empty
-        if(first == null){
-            // Set the first element in the list to be the new node
-            first = newNode;
-            last = newNode;
-        }else{
-            last.next = newNode;
-            last = newNode;
-        }
-
-        numElements++;
-    }
-
-    /**
-     * Add the specified element to the start of this list.
-     * @param value the element to be added to this list
-     * @throws IllegalArgumentException if the value to be added is null
-     */
-    public void addFirst(String value){
-        // VALIDATION:
-        // Nulls are not permitted - throw exception if one is provided
-        if(value == null){
-            throw new IllegalArgumentException("List cannot handle null elements.");
-        }
-
-        // SETUP:
-        // Wrap value in a node so it can be added to the list
-        Node newNode = new Node(value);
-        // LOGIC:
-        // If list is currently empty, the new node should be the first and last element
-        if(isEmpty()){
-            first = newNode;
-            last = newNode;
-        }else{
-            // Put the new node in front of the current first element
-            newNode.next = first;
-            // Set the new node as the official start of the list
-            first = newNode;
-        }
-        // Increase the number of elements in the list
-        numElements++;
-    }
-
-    /**
      * Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.
      * @param value the element to search for
      * @return the index of the first occurrence of the element, or -1 if this list does not contain the element
@@ -148,14 +89,33 @@ public class LinkBasedList {
         return -1;
     }
 
-    private static class Node{
-        private String data;
-        private Node next;
-
-        public Node(String data){
-            this.data = data;
-            this.next = null;
+    /**
+     * Add the specified element to the end of this list.
+     * @param value the element to be added to this list
+     * @throws IllegalArgumentException if the value to be added is null
+     */
+    public void add(String value){
+        // VALIDATION
+        if(value == null){
+            throw new IllegalArgumentException("Null cannot be added to list");
         }
+        // SET UP:
+        // Wrap incoming data in node
+        Node newNode = new Node(value);
+
+        // LOGIC:
+        // Deal with adding first element to list
+        // If the list does not already have a value / is empty
+        if(first == null){
+            // Set the first element in the list to be the new node
+            first = newNode;
+            last = newNode;
+        }else{
+            last.next = newNode;
+            last = newNode;
+        }
+
+        numElements++;
     }
 
     public void add(String value, int pos){
@@ -190,13 +150,43 @@ public class LinkBasedList {
         }
     }
 
+    /**
+     * Add the specified element to the start of this list.
+     * @param value the element to be added to this list
+     * @throws IllegalArgumentException if the value to be added is null
+     */
+    public void addFirst(String value){
+        // VALIDATION:
+        // Nulls are not permitted - throw exception if one is provided
+        if(value == null){
+            throw new IllegalArgumentException("List cannot handle null elements.");
+        }
+
+        // SETUP:
+        // Wrap value in a node so it can be added to the list
+        Node newNode = new Node(value);
+        // LOGIC:
+        // If list is currently empty, the new node should be the first and last element
+        if(isEmpty()){
+            first = newNode;
+            last = newNode;
+        }else{
+            // Put the new node in front of the current first element
+            newNode.next = first;
+            // Set the new node as the official start of the list
+            first = newNode;
+        }
+        // Increase the number of elements in the list
+        numElements++;
+    }
+
     // Remove from list:
     public void remove(int pos){
         // TODO: Validation
 
         // TODO: Remove from start of list
         // TODO: Remove from end of list
-        // Create current node to track our current position in list (Tomaz in class example)
+        // Create current node to track our current position in list (Tomasz in class example)
         Node current = first;
         // Create prev node to track the position of the node before us (Bema in class example)
         Node prev = null;
@@ -207,12 +197,22 @@ public class LinkBasedList {
         }
         // "Snip" node to be removed from list
         // This will make the node before us (Bema) point to the node after us (Oscar),
-        // essentially routing the list around us (Tomaz) and ignoring us entirely
+        // essentially routing the list around us (Tomasz) and ignoring us entirely
         prev.next = current.next;
         // Remove our link to the list so we know we're not in it anymore
         current.next = null;
 
         // Decrease the number of elements in the list as one has been removed
         numElements--;
+    }
+
+    private static class Node{
+        private String data;
+        private Node next;
+
+        public Node(String data){
+            this.data = data;
+            this.next = null;
+        }
     }
 }

@@ -213,6 +213,7 @@ class LinkBasedListTest {
         int sourceDataPos = posToBeAdded;
         for (int i = posToBeAdded+1; i < myList.size(); i++) {
             assertEquals(sourceData[sourceDataPos], myList.get(i));
+            sourceDataPos++;
         }
     }
 }
