@@ -190,4 +190,29 @@ class LinkBasedListTest {
                 - Adding to last position (pos = size)
                 - Adding in actual middle (pos between 0 and size exclusive)
      */
+
+    @Test
+    public void testAddAtPosition_AddingToStart(){
+        String [] sourceData = {"Hi", "Hello", "Hey there"};
+        LinkBasedList myList = new LinkBasedList();
+        for(int i = 0; i < sourceData.length; i++){
+            myList.add(sourceData[i]);
+        }
+
+        int sizeBeforeAdd = myList.size();
+
+        String toBeAdded = "New element";
+        int posToBeAdded = 0;
+        myList.add(toBeAdded, posToBeAdded);
+
+        assertEquals(sizeBeforeAdd+1, myList.size());
+
+        String addedResult = myList.get(posToBeAdded);
+        assertEquals(toBeAdded, addedResult);
+
+        int sourceDataPos = posToBeAdded;
+        for (int i = posToBeAdded+1; i < myList.size(); i++) {
+            assertEquals(sourceData[sourceDataPos], myList.get(i));
+        }
+    }
 }
