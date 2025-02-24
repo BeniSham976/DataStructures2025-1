@@ -189,4 +189,22 @@ public class LinkBasedList {
             numElements++;
         }
     }
+
+    // Remove from list:
+    public void remove(int pos){
+        // TODO: Validation
+
+        // TODO: Remove from start of list
+        // TODO: Remove from end of list
+        Node current = first;
+        Node prev = null;
+        for(int i = 0; i < pos; i++){
+            prev = current;
+            current = current.next;
+        }
+        prev.next = current.next;
+        current.next = null;
+
+        numElements--;
+    }
 }
