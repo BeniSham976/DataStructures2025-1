@@ -9,10 +9,55 @@ public class Supplier {
     private double creditLimit;
 
     public Supplier(String name, String address, double amountOwed, double creditLimit){
+        // Use setters to avoid repeating validation logic in here
+        setName(name);
+        setAddress(address);
+        setAmountOwed(amountOwed);
+        setCreditLimit(creditLimit);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if(name == null){
+            throw new IllegalArgumentException("Name cannot be null.");
+        }
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        if(address == null){
+            throw new IllegalArgumentException("Address cannot be null.");
+        }
         this.address = address;
+    }
+
+    public double getAmountOwed() {
+        return amountOwed;
+    }
+
+    public void setAmountOwed(double amountOwed) {
+        if(amountOwed < 0){
+            throw new IllegalArgumentException("Amount owed cannot be less than 0");
+        }
         this.amountOwed = amountOwed;
-        this.creditLimit= creditLimit;
+    }
+
+    public double getCreditLimit() {
+        return creditLimit;
+    }
+
+    public void setCreditLimit(double creditLimit) {
+        if(creditLimit < 0){
+            throw new IllegalArgumentException("Credit limit cannot be less than 0");
+        }
+        this.creditLimit = creditLimit;
     }
 
     @Override
