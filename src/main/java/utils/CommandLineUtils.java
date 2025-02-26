@@ -31,6 +31,42 @@ public class CommandLineUtils {
     }
 
     /**
+     * Take in an integer (int) value from the user within the specified range (inclusive).
+     * <p>
+     * All values outside the range low to high will be rejected and the method will continue to loop until an int
+     * in that range (inclusive) is
+     * entered.
+     * </p>
+     * @param prompt the information text to be displayed to the user before the value is read in
+     * @param low the bottom end of the range (inclusive)
+     * @param high the top end of the range (inclusive)
+     * @return the first int entered by the user falling between low and high (inclusive)
+     * @throws IllegalArgumentException if low > high
+     */
+    public static int getIntInRange(String prompt, int low, int high){
+        // Validate values to confirm low is less than or equal to high
+        if(low > high){
+            throw new IllegalArgumentException("Low end of range must be less than or equal to high end of range (" + low + " > " + high+ ")");
+        }
+        boolean valid = false;
+        int value = -1;
+
+        while (!valid){
+            // Get a valid int
+            value = getInt(prompt);
+            // Check it's within the desired range
+            if(value < low || value > high){
+                System.out.println("Value must be an integer within " + low + " and " + high + " (inclusive). Please " +
+                        "try again.");
+            }else{
+                valid = true;
+            }
+        }
+
+        return value;
+    }
+
+    /**
      * Take in a decimal (double) value from the user. All other values will be rejected and the method will continue
      * to loop
      * until a double is entered.
