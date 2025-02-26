@@ -148,4 +148,26 @@ public class Supplier {
 
         return hash;
     }
+
+    /**
+     * Returns a String representation of this supplier.
+     * @return a string representation of the object.
+     */
+    @Override
+    public String toString() {
+        return "Supplier{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", amountOwed=" + amountOwed +
+                ", creditLimit=" + creditLimit +
+                '}';
+    }
+
+    /**
+     * Returns a simplified String representation of this supplier containing only their name and address.
+     * @return a string containing the name and address of the supplier.
+     */
+    public String simpleFormat(){
+        return name + " - " + address;
+    }
 }
