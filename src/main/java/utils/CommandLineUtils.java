@@ -3,7 +3,7 @@ package utils;
 import java.util.Scanner;
 
 public class CommandLineUtils {
-    private static Scanner input = new Scanner(System.in);
+    private final static Scanner INPUT = new Scanner(System.in);
 
     /**
      * Take in an integer value from the user. All other values will be rejected and the method will continue to loop
@@ -17,14 +17,14 @@ public class CommandLineUtils {
 
         while(!valid){
             System.out.println(prompt);
-            if(input.hasNextInt()){
+            if(INPUT.hasNextInt()){
                 valid = true;
-                value = input.nextInt();
+                value = INPUT.nextInt();
             }else{
                 System.out.println("Please enter an integer value.");
             }
             // Clear buffer to remove bad data/remaining newline character from number entry
-            input.nextLine();
+            INPUT.nextLine();
         }
 
         return value;
@@ -43,14 +43,14 @@ public class CommandLineUtils {
 
         while(!valid){
             System.out.println(prompt);
-            if(input.hasNextDouble()){
+            if(INPUT.hasNextDouble()){
                 valid = true;
-                value = input.nextDouble();
+                value = INPUT.nextDouble();
             }else{
                 System.out.println("Please enter a decimal value.");
             }
             // Clear buffer to remove bad data/remaining newline character from number entry
-            input.nextLine();
+            INPUT.nextLine();
         }
 
         return value;
@@ -58,10 +58,11 @@ public class CommandLineUtils {
 
     /**
      * Take in a decimal (double) value from the user within the specified range (inclusive).
-     *
+     * <p>
      * All values outside the range low to high will be rejected and the method will continue to loop until a double
      * in that range (inclusive) is
      * entered.
+     * </p>
      * @param prompt the information text to be displayed to the user before the value is read in
      * @param low the bottom end of the range (inclusive)
      * @param high the top end of the range (inclusive)
