@@ -113,15 +113,17 @@ public class Supplier {
      */
     @Override
     public boolean equals(Object o){
-        if(!(o instanceof Supplier)){
+        if(o == null){
+            return false;
+        }
+        if(this.getClass() != o.getClass()){
             return false;
         }
         Supplier s = (Supplier) o;
-
-        if(!this.name.equals(s.name)){
+        if(!Objects.equals(this.name, s.name)){
             return false;
         }
-        if(!this.address.equals(s.address)){
+        if(!Objects.equals(this.address, s.address)){
             return false;
         }
         if(this.amountOwed != s.amountOwed){
