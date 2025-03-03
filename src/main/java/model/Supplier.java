@@ -118,7 +118,7 @@ public class Supplier {
         }
         Supplier s = (Supplier) o;
 
-        if(!this.name.equals(s.name)){
+        if(Objects.equals(this.name, s.name)){
             return false;
         }
         if(!this.address.equals(s.address)){
