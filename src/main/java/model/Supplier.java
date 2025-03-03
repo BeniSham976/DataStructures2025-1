@@ -120,7 +120,8 @@ public class Supplier {
             return false;
         }
         Supplier s = (Supplier) o;
-        if(!Objects.equals(this.name, s.name)){
+
+        if(Objects.equals(this.name, s.name)){
             return false;
         }
         if(!Objects.equals(this.address, s.address)){
