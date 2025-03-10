@@ -102,10 +102,8 @@ public class StringLinkedListSet {
             throw new IllegalArgumentException("Null cannot be added to set");
         }
 
-        int present = indexOf(value);
-        if(present != -1){
-            throw new DuplicateElementException("Element already exists in set");
-        }
+        // BLOCK DUPLICATES
+        blockDuplicates(value);
 
         // SET UP:
         // Wrap incoming data in node
@@ -139,6 +137,9 @@ public class StringLinkedListSet {
                     " " + pos+")");
         }
 
+        // BLOCK DUPLICATES
+        blockDuplicates(value);
+
         if(pos == 0){
             addFirst(value);
         }else if(pos == size()){
@@ -170,6 +171,9 @@ public class StringLinkedListSet {
             throw new IllegalArgumentException("List cannot handle null elements.");
         }
 
+        // BLOCK DUPLICATES
+        blockDuplicates(value);
+
         // SETUP:
         // Wrap value in a node so it can be added to the list
         Node newNode = new Node(value);
@@ -186,6 +190,13 @@ public class StringLinkedListSet {
         }
         // Increase the number of elements in the list
         numElements++;
+    }
+
+    private void blockDuplicates(String value) {
+        int present = indexOf(value);
+        if(present != -1){
+            throw new DuplicateElementException("Element already exists in set");
+        }
     }
 
     // Remove from list:
