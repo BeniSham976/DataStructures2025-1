@@ -181,7 +181,7 @@ public class LinkBasedList {
     }
 
     // Remove from list:
-    public void remove(int pos){
+    public String remove(int pos){
         // Validation
         if(isEmpty() || pos < 0 || pos >= numElements){
             throw new IndexOutOfBoundsException("Index must be between 0 and " + (numElements-1) + " inclusive. " +
@@ -190,10 +190,12 @@ public class LinkBasedList {
                     " " + pos+")");
         }
 
+        String removed = null;
         // Remove from start of list
         // If position to remove from is 0 (i.e. start of list)
         if(pos == 0){
             // Snip off/jump over first element in list
+            removed = first.data;
             first = first.next;
             // If the list is now empty (i.e. there was only one element in the list before we did the remove)
             if(first == null){
@@ -211,6 +213,7 @@ public class LinkBasedList {
                 prev = current;
                 current = current.next;
             }
+            removed = current.data;
             // "Snip" node to be removed from list
             // This will make the node before us (Bema) point to the node after us (Oscar),
             // essentially routing the list around us (Tomasz) and ignoring us entirely
@@ -225,6 +228,8 @@ public class LinkBasedList {
         }
         // Decrease the number of elements in the list as one has been removed
         numElements--;
+        
+        return removed;
     }
 
     private static class Node{
