@@ -25,16 +25,16 @@ public class StringQueue extends LinkBasedList{
         if(isEmpty()){
             throw new IllegalStateException("Cannot retrieve from an empty Queue");
         }
-        return get(0);
+        return super.get(0);
     }
-    
+
     public String remove(){
         if(isEmpty()){
             throw new IllegalStateException("Cannot retrieve from an empty Queue");
         }
-        
-        return remove(0);
+
+        return super.remove(0);
     }
-    
-    
+
+
 }
