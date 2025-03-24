@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.EmptyStackException;
+
 public class ScratchStringStack {
     private int size;
     private Node first;
@@ -11,7 +13,13 @@ public class ScratchStringStack {
 
     // TODO: push()
     // TODO: pop()
-    // TODO: peek()
+
+    public String peek(){
+        if(isEmpty()){
+            throw new EmptyStackException();
+        }
+        return first.data;
+    }
 
     public int size(){
         return this.size;
