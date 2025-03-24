@@ -22,8 +22,16 @@ public class ScratchStringStack {
         size++;
     }
 
+    public String pop(){
+        if(isEmpty()){
+            throw new EmptyStackException();
+        }
 
-    // TODO: pop()
+        String removed = first.data;
+        first = first.next;
+        size--;
+        return removed;
+    }
 
     public String peek(){
         if(isEmpty()){
