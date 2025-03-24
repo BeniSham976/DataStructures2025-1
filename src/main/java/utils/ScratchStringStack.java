@@ -11,7 +11,18 @@ public class ScratchStringStack {
         this.first = null;
     }
 
-    // TODO: push()
+    public void push(String data){
+        if(data == null){
+            throw new IllegalArgumentException("Nulls are not permitted in the stack");
+        }
+
+        Node newNode = new Node(data);
+        newNode.next = first;
+        first = newNode;
+        size++;
+    }
+
+
     // TODO: pop()
 
     public String peek(){
