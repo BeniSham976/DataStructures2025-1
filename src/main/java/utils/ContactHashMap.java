@@ -10,10 +10,24 @@ public class ContactHashMap {
         count = 0;
     }
 
-    public Integer get(String key){
-        if(key == null){
-            throw new IllegalArgumentException("Key cannot be null");
+    public void put(String key, Integer value){
+        validateKey(key);
+
+        // Call dedicated method to calculate the appropriate destination for the value
+        // This adheres to single responsibility principle
+        int destinationSlot = calculateSlot(key);
+
+        // If the slot is available
+        if(map[destinationSlot] == null){
+            // Create an entry to hold the key and value within the map
+            Entry newEntry = new Entry(key, value);
+            // Add that entry to the map in the calculated destination slot
+            map[destinationSlot] = newEntry;
         }
+    }
+
+    public Integer get(String key){
+        validateKey(key);
 
         // Call dedicated method to calculate the appropriate destination for the value
         // This adheres to single responsibility principle
@@ -24,6 +38,12 @@ public class ContactHashMap {
         }
 
         return map[destinationSlot].value;
+    }
+
+    private static void validateKey(String key) {
+        if(key == null){
+            throw new IllegalArgumentException("Key cannot be null");
+        }
     }
 
     private int calculateSlot(String key) {
