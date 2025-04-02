@@ -63,6 +63,16 @@ public class ContactHashMap {
         return null;
     }
 
+    public boolean containsKey(String key){
+        validateKey(key);
+
+        Integer value = get(key);
+        if(value != null){
+            return true;
+        }
+        return false;
+    }
+
     private static void validateKey(String key) {
         if(key == null){
             throw new IllegalArgumentException("Key cannot be null");
