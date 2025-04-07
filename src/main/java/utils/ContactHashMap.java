@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHashMap {
     private static final int INITIAL_SIZE = 103;
@@ -72,6 +73,30 @@ public class ContactHashMap {
         }
         return false;
     }
+
+    public Integer remove(String key){
+        validateKey(key);
+
+        int destinationSlot = calculateSlot(key);
+
+        List<Entry> slotList = map[destinationSlot];
+        if(slotList == null){
+            return null;
+        }
+
+        for (int i = 0; i < slotList.size(); i++) {
+            Entry currentEntry = slotList.get(i);
+            if(currentEntry.key.equals(key)){
+                Integer oldValue = currentEntry.value;
+                slotList.remove(i);
+                count--;
+                return oldValue;
+            }
+        }
+
+        return null;
+    }
+
 
     private static void validateKey(String key) {
         if(key == null){
