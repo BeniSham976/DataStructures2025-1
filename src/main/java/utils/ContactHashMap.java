@@ -74,6 +74,62 @@ public class ContactHashMap {
         return false;
     }
 
+
+    public String[] getKeys(){
+        // SETUP:
+        // Creates array to hold keys (what size should it be?)
+        String [] keyArray = new String[count];
+        // Create tracker to store current position in array
+        int posTracker = 0;
+
+        for (int i = 0; i < map.length; i++) {
+            if(map[i] != null) {
+                // Store list from current slot as current list
+                ArrayList<Entry> slotList = map[i];
+                //For each Entry in current list:
+                for (int j = 0; j < slotList.size(); j++) {
+                    Entry currentEntry = slotList.get(i);
+                    // Add current entry's key to array at tracker position
+                    keyArray[posTracker] = currentEntry.key;
+                    // Increase tracker
+                    posTracker++;
+                }
+            }
+            if(posTracker == keyArray.length){
+                return keyArray;
+            }
+        }
+        return keyArray;
+    }
+
+    public Integer[] getValues(){
+        // SETUP:
+        // Creates array to hold values (what size should it be?)
+        Integer [] valueArray = new Integer[count];
+        // Create tracker to store current position in array
+        int posTracker = 0;
+
+        for (int i = 0; i < map.length; i++) {
+            if(map[i] != null) {
+                // Store list from current slot as current list
+                ArrayList<Entry> slotList = map[i];
+                //For each Entry in current list:
+                for (int j = 0; j < slotList.size(); j++) {
+                    Entry currentEntry = slotList.get(i);
+                    // Add current entry's value to array at tracker position
+                    valueArray[posTracker] = currentEntry.value;
+                    // Increase tracker
+                    posTracker++;
+                }
+            }
+
+            if(posTracker == valueArray.length){
+                return valueArray;
+            }
+        }
+        return valueArray;
+    }
+
     public Integer remove(String key){
         validateKey(key);
 
